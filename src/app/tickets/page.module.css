@@ -1,0 +1,137 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  padding-bottom: 4rem;
+}
+
+.hero {
+  background: linear-gradient(to bottom, rgba(10, 10, 10, 0.8), var(--bg-dark)), url('/images/hero-bg.png') center/cover;
+  padding: 8rem 2rem 4rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border-gold);
+}
+
+.hero h1 {
+  font-family: var(--font-serif);
+  color: var(--primary-gold);
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  align-items: center;
+}
+
+.ticketCard {
+  background: var(--bg-panel);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 12px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  transition: transform 0.3s ease;
+  position: relative;
+}
+
+.ticketCard:hover {
+  transform: translateY(-10px);
+}
+
+.vipCard {
+  border-color: var(--primary-gold);
+  background: rgba(212, 175, 55, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  padding: 3.5rem 2rem; /* Make it slightly taller */
+}
+
+.popularBadge {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--primary-gold);
+  color: var(--bg-dark);
+  padding: 0.4rem 1.5rem;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.ticketHeader {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 1.5rem;
+}
+
+.ticketHeader h2 {
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.price {
+  color: var(--primary-gold-light);
+  font-size: 2.5rem;
+  font-weight: bold;
+  font-family: var(--font-serif);
+}
+
+.features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2.5rem 0;
+  text-align: left;
+}
+
+.features li {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.features li::before {
+  content: "✓";
+  color: var(--primary-gold);
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.buyBtn {
+  background: linear-gradient(135deg, var(--primary-gold), var(--primary-gold-dark));
+  color: var(--bg-dark);
+  padding: 1rem;
+  width: 100%;
+  border-radius: 6px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  transition: filter 0.3s ease;
+}
+
+.buyBtn:hover {
+  filter: brightness(1.1);
+}

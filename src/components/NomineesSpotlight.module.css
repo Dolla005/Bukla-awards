@@ -1,0 +1,191 @@
+.section {
+  padding: 2rem;
+  background: var(--bg-dark);
+  border: 1px solid var(--border-gold);
+  border-radius: 8px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.header h2 {
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  color: var(--text-primary);
+}
+
+.viewAll {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--primary-gold);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.carouselWrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navBtn {
+  background: rgba(26, 8, 8, 0.8);
+  border: 1px solid var(--border-gold);
+  color: var(--primary-gold);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.navBtn:hover {
+  background: var(--primary-gold);
+  color: var(--bg-dark);
+}
+
+.carousel {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  gap: 1rem;
+  padding: 1rem 0;
+  scrollbar-width: none;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-width: 150px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.imageContainer {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  padding: 4px;
+}
+
+.ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid var(--primary-gold);
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover .ring {
+  opacity: 1;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.clubLogo {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-gold);
+}
+
+.crown {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.clubLogo span {
+  font-size: 0.6rem;
+  letter-spacing: 1px;
+}
+
+.clubLogo strong {
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.info h3 {
+  font-size: 1rem;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.verified {
+  color: var(--primary-gold);
+  fill: var(--primary-gold);
+}
+
+.info p {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 900px) {
+  .carousel {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 1rem;
+  }
+  .card {
+    min-width: 100px;
+  }
+  .imageContainer {
+    width: 80px;
+    height: 80px;
+  }
+  .navBtn {
+    display: none;
+  }
+  .carouselWrapper {
+    gap: 0;
+    min-width: 0;
+  }
+}

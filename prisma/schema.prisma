@@ -1,0 +1,105 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  phone         String?   @unique
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  password      String?
+  role          String    @default("USER")
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  votes         Vote[]
+
+  @@index([phone])
+  @@index([email])
+}
+
+model Category {
+  id          String    @id @default(cuid())
+  name        String    @unique
+  description String?
+  active      Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  nominees    Nominee[]
+  votes       Vote[]
+  nominations NominationSubmission[]
+}
+
+model Nominee {
+  id          String    @id @default(cuid())
+  name        String
+  club        String?
+  county      String?
+  photoUrl    String?
+  verified    Boolean   @default(false)
+  isClub      Boolean   @default(false)
+  categoryId  String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  category    Category  @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  votes       Vote[]
+
+  @@index([categoryId])
+}
+
+model Vote {
+  id          String   @id @default(cuid())
+  userId      String
+  nomineeId   String
+  categoryId  String
+  createdAt   DateTime @default(now())
+
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  nominee     Nominee  @relation(fields: [nomineeId], references: [id], onDelete: Cascade)
+  category    Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, categoryId]) // Prevent multiple votes in same category
+  @@index([nomineeId])
+  @@index([categoryId])
+}
+
+model OtpVerification {
+  id        String   @id @default(cuid())
+  phone     String
+  code      String
+  expiresAt DateTime
+  verified  Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([phone, code])
+}
+
+model NominationSubmission {
+  id             String   @id @default(cuid())
+  nomineeName    String
+  categoryId     String
+  instagram      String?
+  reason         String?
+  submitterName  String?
+  submitterPhone String?
+  status         String   @default("PENDING") // PENDING, APPROVED, REJECTED
+  createdAt      DateTime @default(now())
+
+  category       Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@index([status])
+  @@index([categoryId])
+}
+
+model SystemSetting {
+  id    String @id @default("global")
+  key   String @unique
+  value String
+  updatedAt DateTime @updatedAt
+}

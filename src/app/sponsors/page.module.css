@@ -1,0 +1,121 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  padding-bottom: 4rem;
+}
+
+.hero {
+  background: linear-gradient(to bottom, rgba(10, 10, 10, 0.8), var(--bg-dark)), url('/images/hero-bg.png') center/cover;
+  padding: 8rem 2rem 4rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border-gold);
+}
+
+.hero h1 {
+  font-family: var(--font-serif);
+  color: var(--primary-gold);
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.section {
+  margin-bottom: 5rem;
+}
+
+.section h2 {
+  font-family: var(--font-serif);
+  color: var(--primary-gold-light);
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.gridSmall {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.sponsorCard, .sponsorCardSmall {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-weight: 600;
+  transition: border-color 0.3s ease;
+}
+
+.sponsorCard {
+  height: 200px;
+  font-size: 1.2rem;
+}
+
+.sponsorCardSmall {
+  height: 120px;
+}
+
+.sponsorCard:hover, .sponsorCardSmall:hover {
+  border-color: var(--primary-gold);
+  background: rgba(212, 175, 55, 0.05);
+}
+
+.becomeSponsor {
+  background: var(--bg-panel);
+  padding: 4rem 2rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-gold);
+}
+
+.becomeSponsor h2 {
+  color: var(--primary-gold);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.becomeSponsor p {
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+.contactBtn {
+  background: linear-gradient(135deg, var(--primary-gold), var(--primary-gold-dark));
+  color: var(--bg-dark);
+  padding: 1rem 2rem;
+  border-radius: 6px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border: none;
+  cursor: pointer;
+  transition: filter 0.3s ease;
+}
+
+.contactBtn:hover {
+  filter: brightness(1.1);
+}

@@ -1,0 +1,170 @@
+.widgets {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  height: 100%;
+}
+
+.ticketWidget {
+  background: linear-gradient(
+    to right,
+    rgba(26, 8, 8, 0.9) 0%,
+    rgba(10, 2, 2, 0.95) 100%
+  ), url('https://images.unsplash.com/photo-1540039155732-680874a8d462?auto=format&fit=crop&q=80');
+  background-size: cover;
+  background-position: center;
+  border: 1px solid var(--border-gold);
+  border-radius: 8px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.ticketWidget::after {
+  content: '';
+  position: absolute;
+  right: -20px;
+  top: -20px;
+  width: 150px;
+  height: 150px;
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(212, 175, 55, 0.1) 10px,
+    rgba(212, 175, 55, 0.1) 20px
+  );
+  opacity: 0.5;
+  border-radius: 50%;
+}
+
+.ticketContent {
+  position: relative;
+  z-index: 2;
+}
+
+.ticketContent h3 {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.ticketContent p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  max-width: 80%;
+}
+
+.buyBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, var(--primary-gold), var(--primary-gold-dark));
+  color: var(--bg-dark);
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.buyBtn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+}
+
+.newsWidget {
+  background: var(--bg-dark);
+  border: 1px solid var(--border-gold);
+  border-radius: 8px;
+  padding: 1.5rem;
+  flex: 1;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.header h3 {
+  font-size: 1rem;
+  letter-spacing: 2px;
+  color: var(--text-primary);
+}
+
+.viewAll {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--primary-gold);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.newsItem {
+  display: flex;
+  gap: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.newsItem:hover {
+  transform: translateX(5px);
+}
+
+.newsImage {
+  width: 80px;
+  height: 60px;
+  border-radius: 4px;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.newsImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.newsContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.tag {
+  font-size: 0.65rem;
+  color: var(--primary-gold);
+  letter-spacing: 1px;
+  margin-bottom: 0.25rem;
+}
+
+.newsContent h4 {
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+}
+
+.date {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+@media (max-width: 768px) {
+  .ticketWidget, .newsWidget {
+    padding: 1rem;
+  }
+}
