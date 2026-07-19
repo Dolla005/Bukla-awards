@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import styles from './TrendingCategories.module.css';
 
@@ -14,9 +15,9 @@ export default function TrendingCategories() {
     <aside className={styles.sidebar}>
       <div className={styles.header}>
         <h2>TRENDING CATEGORIES</h2>
-        <button className={styles.viewAll}>
+        <Link href="/categories" className={styles.viewAll}>
           VIEW ALL <ArrowRight size={14} />
-        </button>
+        </Link>
       </div>
 
       <div className={styles.list}>

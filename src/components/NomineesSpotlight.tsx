@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { ArrowRight, ChevronLeft, ChevronRight, CheckCircle2 } from 'lucide-react';
 import styles from './NomineesSpotlight.module.css';
 
@@ -14,9 +15,9 @@ export default function NomineesSpotlight() {
     <section className={styles.section}>
       <div className={styles.header}>
         <h2>NOMINEES SPOTLIGHT</h2>
-        <button className={styles.viewAll}>
+        <Link href="/nominees" className={styles.viewAll}>
           VIEW ALL NOMINEES <ArrowRight size={14} />
-        </button>
+        </Link>
       </div>
 
       <div className={styles.carouselWrapper}>
