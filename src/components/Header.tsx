@@ -53,9 +53,6 @@ export default function Header() {
         </nav>
 
         <div className={styles.actions}>
-          <button className={styles.searchBtn} aria-label="Search">
-            <Search size={20} />
-          </button>
           <div className={styles.desktopAuth}>
             <Link href="/login" className={styles.loginBtn}>LOGIN</Link>
             <Link href="/signup" className={styles.signupBtn}>SIGN UP</Link>

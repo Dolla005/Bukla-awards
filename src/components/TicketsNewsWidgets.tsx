@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Ticket, ArrowRight, Calendar } from 'lucide-react';
 import styles from './TicketsNewsWidgets.module.css';
 
@@ -8,10 +9,10 @@ export default function TicketsNewsWidgets() {
         <div className={styles.ticketContent}>
           <h3>AWARDS NIGHT TICKETS</h3>
           <p>Be part of the biggest night in Kenya&apos;s nightlife industry.</p>
-          <button className={styles.buyBtn}>
+          <Link href="/tickets" className={styles.buyBtn}>
             <Ticket size={16} />
             BUY TICKETS NOW
-          </button>
+          </Link>
         </div>
       </div>
 

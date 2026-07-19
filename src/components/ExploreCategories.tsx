@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { ArrowRight, Headphones, Crown, Mic, User, Globe } from 'lucide-react';
 import styles from './ExploreCategories.module.css';
 
@@ -14,9 +15,9 @@ export default function ExploreCategories() {
     <section className={styles.section}>
       <div className={styles.header}>
         <h2>EXPLORE CATEGORIES</h2>
-        <button className={styles.browseBtn}>
+        <Link href="/categories" className={styles.browseBtn}>
           BROWSE ALL CATEGORIES <ArrowRight size={16} />
-        </button>
+        </Link>
       </div>
       
       <div className={styles.grid}>
@@ -32,9 +33,9 @@ export default function ExploreCategories() {
                 <h3>{cat.title}</h3>
                 <p>{cat.subtitle}</p>
               </div>
-              <button className={styles.actionBtn}>
+              <Link href="/categories" className={styles.actionBtn}>
                 <ArrowRight size={16} />
-              </button>
+              </Link>
             </div>
           </div>
         ))}
