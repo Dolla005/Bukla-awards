@@ -1,6 +1,8 @@
 import { notFound } from 'next/navigation';
 import Header from '@/components/Header';
 import { prisma } from '@/lib/prisma';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/lib/auth';
 import styles from './page.module.css';
 import VoteClientComponent from './VoteClientComponent';
 
@@ -23,6 +25,16 @@ export default async function VotePage({ params }: { params: Promise<{ categoryI
     notFound();
   }
 
+  const session = await getServerSession(authOptions);
+  let voteBalance = 0;
+  if (session?.user) {
+    const user = await prisma.user.findUnique({
+      where: { id: (session.user as any).id },
+      select: { voteBalance: true }
+    });
+    voteBalance = user?.voteBalance || 0;
+  }
+
   return (
     <div className={styles.page}>
       <Header />
@@ -35,7 +47,7 @@ export default async function VotePage({ params }: { params: Promise<{ categoryI
           </div>
         </div>
 
-        <VoteClientComponent category={category} nominees={category.nominees} />
+        <VoteClientComponent category={category} nominees={category.nominees} initialVoteBalance={voteBalance} />
       </main>
     </div>
   );

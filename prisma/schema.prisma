@@ -16,6 +16,7 @@ model User {
   image         String?
   password      String?
   role          String    @default("USER")
+  voteBalance   Int       @default(0)
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
   votes         Vote[]
@@ -64,7 +65,6 @@ model Vote {
   nominee     Nominee  @relation(fields: [nomineeId], references: [id], onDelete: Cascade)
   category    Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
 
-  @@unique([userId, categoryId]) // Prevent multiple votes in same category
   @@index([nomineeId])
   @@index([categoryId])
 }
