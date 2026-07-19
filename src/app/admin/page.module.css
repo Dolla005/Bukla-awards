@@ -120,3 +120,12 @@
   background: linear-gradient(135deg, rgba(26, 8, 8, 0.8) 0%, rgba(10, 2, 2, 0.9) 100%);
   transform: translateY(-3px);
 }
+
+@media (max-width: 768px) {
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+  .actionsGrid {
+    grid-template-columns: 1fr;
+  }
+}

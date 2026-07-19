@@ -1,0 +1,42 @@
+config:
+  # This is the target URL. Change this to your production URL when deployed (e.g., "https://bukla-awards.com")
+  target: "http://localhost:3000"
+  
+  # These phases define the traffic pattern
+  phases:
+    - duration: 30 # For 30 seconds
+      arrivalRate: 5 # Start with 5 new users per second
+      rampTo: 30 # Gradually increase to 30 new users per second
+      name: "Warm up phase"
+      
+    - duration: 60 # Then for 60 seconds
+      arrivalRate: 30 # Sustain 30 new users per second
+      name: "Sustained heavy load"
+
+  # We want to ensure the server responds quickly and without errors
+  ensure:
+    maxErrorRate: 1 # Fail the test if more than 1% of requests fail
+    p95: 1000 # Fail if 95% of requests take longer than 1 second (1000ms)
+
+scenarios:
+  - name: "Typical User Browsing Flow"
+    weight: 7 # 70% of virtual users will do this
+    flow:
+      - get:
+          url: "/"
+      - think: 1 # Wait 1 second (simulate reading)
+      - get:
+          url: "/categories"
+      - think: 2
+      - get:
+          url: "/nominate"
+
+  - name: "Direct to Voting Flow"
+    weight: 3 # 30% of virtual users will do this
+    flow:
+      - get:
+          url: "/categories"
+      - think: 1
+      # Note: We are simulating heavy reads to the pages. 
+      # Simulating actual voting (POST requests) requires complex session/cookie mocking 
+      # since users must be logged in to vote. SSR page loads are the heaviest part of Next.js anyway.

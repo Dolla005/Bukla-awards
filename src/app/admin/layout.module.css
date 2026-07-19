@@ -147,18 +147,71 @@
   flex: 1;
 }
 
+.topbarMobile {
+  display: none;
+  height: 70px;
+  background: var(--bg-panel);
+  border-bottom: 1px solid var(--border-gold);
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 60;
+}
+
+.sidebarHeaderMobile h2 {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--primary-gold);
+  letter-spacing: 1px;
+}
+
+.mobileMenuBtn {
+  background: none;
+  border: none;
+  color: var(--primary-gold);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 60;
+}
+
 @media (max-width: 900px) {
   .adminContainer {
     flex-direction: column;
   }
+  .topbarMobile {
+    display: flex;
+  }
+  .topbarDesktop {
+    display: none;
+  }
   .sidebar {
-    position: static;
+    position: fixed;
+    top: 70px;
+    left: -100%;
     width: 100%;
-    height: auto;
+    height: calc(100vh - 70px);
     border-right: none;
-    border-bottom: 1px solid var(--border-gold);
+    background-color: var(--bg-dark);
+    transition: left 0.3s ease;
+    z-index: 50;
+  }
+  .sidebar.open {
+    left: 0;
+  }
+  .sidebarHeader {
+    display: none;
   }
   .mainContent {
     margin-left: 0;
+    margin-top: 70px;
+    width: 100%;
+  }
+  .content {
+    padding: 1rem;
   }
 }
