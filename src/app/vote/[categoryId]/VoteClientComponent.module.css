@@ -191,6 +191,8 @@
 
 .amountInput input {
   flex: 1;
+  min-width: 0;
+  box-sizing: border-box;
   padding: 0.8rem;
   background: var(--bg-dark);
   border: 1px solid var(--border-gold);
@@ -237,5 +239,15 @@
   
   .buyBtn {
     text-align: center;
+  }
+
+  .amountInput {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+
+  .voteControls {
+    padding: 1.5rem;
   }
 }
