@@ -6,7 +6,10 @@ import styles from './page.module.css';
 export default async function NominatePage() {
   const categories = await prisma.category.findMany({
     where: { active: true },
-    orderBy: { name: 'asc' }
+    orderBy: [
+      { orderIndex: 'asc' },
+      { name: 'asc' }
+    ]
   });
 
   return (

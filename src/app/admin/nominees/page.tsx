@@ -18,7 +18,10 @@ export default async function NomineesAdmin() {
     }),
     prisma.category.findMany({
       where: { active: true },
-      orderBy: { name: 'asc' },
+      orderBy: [
+        { orderIndex: 'asc' },
+        { name: 'asc' }
+      ],
       select: { id: true, name: true }
     })
   ]);

@@ -3,7 +3,10 @@ import styles from './page.module.css';
 
 export default async function CategoriesAdmin() {
   const categories = await prisma.category.findMany({
-    orderBy: { createdAt: 'desc' },
+    orderBy: [
+      { orderIndex: 'asc' },
+      { name: 'asc' }
+    ],
     include: {
       _count: {
         select: { nominees: true, votes: true }

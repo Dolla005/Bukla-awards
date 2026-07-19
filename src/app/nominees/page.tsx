@@ -11,7 +11,10 @@ export default async function NomineesPage() {
         where: { verified: true }
       }
     },
-    orderBy: { name: 'asc' }
+    orderBy: [
+      { orderIndex: 'asc' },
+      { name: 'asc' }
+    ]
   });
 
   return (

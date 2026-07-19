@@ -31,7 +31,11 @@ export default async function ResultsPage() {
           }
         }
       }
-    }
+    },
+    orderBy: [
+      { orderIndex: 'asc' },
+      { name: 'asc' }
+    ]
   });
 
   // Calculate winner for each category

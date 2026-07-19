@@ -13,7 +13,11 @@ export default async function CategoriesPage() {
       _count: {
         select: { nominees: true, votes: true }
       }
-    }
+    },
+    orderBy: [
+      { orderIndex: 'asc' },
+      { name: 'asc' }
+    ]
   });
 
   return (
