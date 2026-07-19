@@ -1,15 +1,19 @@
 import { prisma } from '@/lib/prisma';
 import styles from './page.module.css';
-import { Users, Vote, Tags, MessageSquare } from 'lucide-react';
+import { Users, Vote, Tags, MessageSquare, DollarSign } from 'lucide-react';
 import Link from 'next/link';
 
 export default async function AdminDashboard() {
-  const [totalVotes, totalNominees, totalCategories, pendingNominations] = await Promise.all([
+  const [totalVotes, totalNominees, totalCategories, pendingNominations, userAggregate] = await Promise.all([
     prisma.vote.count(),
     prisma.nominee.count(),
     prisma.category.count(),
-    prisma.nominationSubmission.count({ where: { status: 'PENDING' } })
+    prisma.nominationSubmission.count({ where: { status: 'PENDING' } }),
+    prisma.user.aggregate({ _sum: { voteBalance: true } })
   ]);
+
+  const unusedVotes = userAggregate._sum.voteBalance || 0;
+  const totalRevenue = (totalVotes + unusedVotes) * 25;
 
   return (
     <div className={styles.dashboard}>
@@ -19,6 +23,15 @@ export default async function AdminDashboard() {
       </header>
 
       <div className={styles.statsGrid}>
+        <div className={styles.statCard}>
+          <div className={styles.statIconWrapper} style={{ color: '#22c55e' }}>
+            <DollarSign className={styles.statIcon} />
+          </div>
+          <div className={styles.statInfo}>
+            <p className={styles.statLabel}>Total Revenue (Ksh)</p>
+            <h3 className={styles.statValue}>{totalRevenue.toLocaleString()}</h3>
+          </div>
+        </div>
         <div className={styles.statCard}>
           <div className={styles.statIconWrapper}>
             <Vote className={styles.statIcon} />
