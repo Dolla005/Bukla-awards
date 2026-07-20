@@ -21,6 +21,7 @@ export default function CheckoutClient() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
+  const [userPhone, setUserPhone] = useState('');
   
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -29,6 +30,7 @@ export default function CheckoutClient() {
     
     try {
       const formData = new FormData(e.currentTarget);
+      setUserPhone(formData.get('phone') as string);
       await createTicketOrder(formData);
       setSuccess(true);
     } catch (err: any) {
@@ -41,16 +43,15 @@ export default function CheckoutClient() {
   if (success) {
     return (
       <div className={styles.successCard}>
-        <h2>Ticket Reserved Successfully!</h2>
-        <p>Thank you for reserving your {ticketType} ticket(s).</p>
+        <h2>Processing Payment...</h2>
+        <p>We are processing your {ticketType} ticket reservation.</p>
         <div className={styles.paymentInstructions}>
-          <h3>Payment Instructions</h3>
-          <p>Please send <strong>KSH {(price * quantity).toLocaleString()}</strong> to our MPESA Till Number to finalize your order.</p>
-          <div className={styles.tillInfo}>
-            <span>Buy Goods Till Number:</span>
-            <strong>123456</strong>
+          <h3>M-PESA Payment</h3>
+          <p>Please check your phone (<strong>{userPhone || 'your number'}</strong>). An M-PESA prompt has been sent to you.</p>
+          <div className={styles.tillInfo} style={{ justifyContent: 'center', textAlign: 'center' }}>
+            <span>Enter your <strong>M-PESA PIN</strong> to complete the payment of <strong>KSH {(price * quantity).toLocaleString()}</strong>.</span>
           </div>
-          <p>Your ticket will be verified and sent to your email once payment is confirmed.</p>
+          <p>Once you enter your PIN, your ticket will be verified and sent to your email.</p>
         </div>
         <button onClick={() => router.push('/tickets')} className={styles.backBtn}>Back to Tickets</button>
       </div>
