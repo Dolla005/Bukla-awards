@@ -108,3 +108,30 @@
   font-style: italic;
   grid-column: 1 / -1;
 }
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .imageWrapper {
+    height: 150px;
+  }
+
+  .info {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .info h3 {
+    font-size: 0.9rem;
+  }
+
+  .club {
+    font-size: 0.75rem;
+  }
+
+  .county {
+    font-size: 0.7rem;
+  }
+}
