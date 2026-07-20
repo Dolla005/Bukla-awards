@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Search, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import { useSession, signOut } from 'next-auth/react';
 import styles from './Header.module.css';
 
 const navLinks = [
@@ -21,6 +22,7 @@ const navLinks = [
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { data: session } = useSession();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -54,8 +56,19 @@ export default function Header() {
 
         <div className={styles.actions}>
           <div className={styles.desktopAuth}>
-            <Link href="/login" className={styles.loginBtn}>LOGIN</Link>
-            <Link href="/signup" className={styles.signupBtn}>SIGN UP</Link>
+            {session ? (
+              <>
+                {(session.user as any)?.role === 'ADMIN' && (
+                  <Link href="/admin" className={styles.loginBtn}>ADMIN</Link>
+                )}
+                <button onClick={() => signOut({ callbackUrl: '/' })} className={styles.signupBtn} style={{ cursor: 'pointer' }}>LOGOUT</button>
+              </>
+            ) : (
+              <>
+                <Link href="/login" className={styles.loginBtn}>LOGIN</Link>
+                <Link href="/signup" className={styles.signupBtn}>SIGN UP</Link>
+              </>
+            )}
           </div>
           
           <button className={styles.mobileMenuBtn} onClick={toggleMobileMenu}>
@@ -76,8 +89,19 @@ export default function Header() {
                 </li>
               ))}
               <li className={styles.mobileAuthLinks}>
-                <Link href="/login" onClick={closeMenu} className={styles.loginBtn}>LOGIN</Link>
-                <Link href="/signup" onClick={closeMenu} className={styles.signupBtn}>SIGN UP</Link>
+                {session ? (
+                  <>
+                    {(session.user as any)?.role === 'ADMIN' && (
+                      <Link href="/admin" onClick={closeMenu} className={styles.loginBtn}>ADMIN</Link>
+                    )}
+                    <button onClick={() => { closeMenu(); signOut({ callbackUrl: '/' }); }} className={styles.signupBtn} style={{ cursor: 'pointer', width: '100%', marginTop: '1rem' }}>LOGOUT</button>
+                  </>
+                ) : (
+                  <>
+                    <Link href="/login" onClick={closeMenu} className={styles.loginBtn}>LOGIN</Link>
+                    <Link href="/signup" onClick={closeMenu} className={styles.signupBtn}>SIGN UP</Link>
+                  </>
+                )}
               </li>
             </ul>
           </nav>
