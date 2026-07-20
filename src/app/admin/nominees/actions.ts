@@ -8,6 +8,7 @@ export async function addNominee(formData: FormData) {
   const categoryId = formData.get('categoryId') as string;
   const club = formData.get('club') as string;
   const county = formData.get('county') as string;
+  const region = formData.get('region') as string;
   const photoUrl = formData.get('photoUrl') as string;
 
   if (!name || !categoryId) {
@@ -20,6 +21,7 @@ export async function addNominee(formData: FormData) {
       categoryId,
       club: club || null,
       county: county || null,
+      region: region || null,
       photoUrl: photoUrl || null,
       verified: true,
     }

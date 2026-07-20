@@ -101,6 +101,10 @@ export default function AddNomineeForm({ categories }: { categories: Category[] 
           </div>
         </div>
         <div className={styles.formGroup}>
+          <label>Region (Optional - for Clubs)</label>
+          <input type="text" name="region" placeholder="e.g., Westlands, Nairobi" />
+        </div>
+        <div className={styles.formGroup}>
           <label>Nominee Photo</label>
           <div className={styles.uploadArea} onClick={() => fileInputRef.current?.click()}>
             {preview ? (
