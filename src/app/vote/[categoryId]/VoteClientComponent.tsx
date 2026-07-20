@@ -43,6 +43,7 @@ export default function VoteClientComponent({ category, nominees, initialVoteBal
       if (!res.ok) {
         if (data.insufficientBalance) {
           setInsufficientBalance(true);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         throw new Error(data.error || 'Failed to submit vote');
       }
