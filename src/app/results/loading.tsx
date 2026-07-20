@@ -24,7 +24,7 @@ export default function ResultsLoading() {
         fontSize: '2rem',
         animation: 'pulse 1.5s infinite ease-in-out'
       }}>
-        Calculating Winners...
+        Loading Results...
       </h2>
       <style>{`
         @keyframes pulse {
