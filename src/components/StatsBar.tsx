@@ -1,12 +1,12 @@
-import { Users, Star, Trophy, Building2 } from 'lucide-react';
+import { Award, Star, Trophy, Building2 } from 'lucide-react';
 import styles from './StatsBar.module.css';
 
 export default function StatsBar() {
   const stats = [
-    { icon: <Users size={32} className={styles.icon} />, value: '25K+', label: 'Total Votes' },
-    { icon: <Star size={32} className={styles.icon} />, value: '150+', label: 'Nominees' },
+    { icon: <Award size={32} className={styles.icon} />, value: '1st', label: 'Edition' },
+    { icon: <Star size={32} className={styles.icon} />, value: '100+', label: 'Nominees' },
     { icon: <Trophy size={32} className={styles.icon} />, value: '20+', label: 'Categories' },
-    { icon: <Building2 size={32} className={styles.icon} />, value: '1,000+', label: 'Clubs Represented' },
+    { icon: <Building2 size={32} className={styles.icon} />, value: '50+', label: 'Clubs Represented' },
   ];
 
   return (
