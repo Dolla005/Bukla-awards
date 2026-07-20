@@ -7,7 +7,7 @@ export default function NomineesSpotlight() {
     { id: 1, name: 'DJ KAFI', category: 'Best DJ of the Year', image: 'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=200&h=200&fit=crop', verified: true },
     { id: 2, name: 'MISS JAY', category: 'Best Hostess of the Year', image: 'https://images.unsplash.com/photo-1531123897727-8f129e1bf98c?w=200&h=200&fit=crop', verified: true },
     { id: 3, name: 'MC PRICE', category: 'Best MC of the Year', image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop', verified: true },
-    { id: 4, name: 'CLUB SIGNATURE', category: 'Peoples Club of the Year', image: 'https://images.unsplash.com/photo-1566737236500-c8ac43014a67?w=200&h=200&fit=crop', verified: false, isClub: true, region: 'Eldoret' },
+    { id: 4, name: 'CLUB SIGNATURE', category: 'Peoples Club of the Year', image: 'https://images.unsplash.com/photo-1566737236500-c8ac43014a67?w=200&h=200&fit=crop', verified: false, isClub: true },
     { id: 5, name: 'DJ BASH', category: 'Best DJ of the Year', image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop', verified: true },
   ];
 
@@ -46,7 +46,6 @@ export default function NomineesSpotlight() {
                   {nominee.verified && <CheckCircle2 size={14} className={styles.verified} />}
                 </h3>
                 <p>{nominee.category}</p>
-                {(nominee as any).region && <span className={styles.regionBadge}>{(nominee as any).region}</span>}
               </div>
             </div>
           ))}

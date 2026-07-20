@@ -157,20 +157,6 @@
   margin-top: 0.25rem;
 }
 
-.regionBadge {
-  display: inline-block;
-  margin-top: 0.4rem;
-  font-size: 0.7rem;
-  color: var(--primary-gold);
-  background: rgba(212, 175, 55, 0.1);
-  border: 1px solid rgba(212, 175, 55, 0.2);
-  padding: 0.2rem 0.6rem;
-  border-radius: 4px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
 .actionArea {
   display: flex;
   justify-content: center;

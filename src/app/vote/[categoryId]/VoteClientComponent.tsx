@@ -110,7 +110,6 @@ export default function VoteClientComponent({ category, nominees, initialVoteBal
             <div className={styles.info}>
               <h3>{nominee.name} {nominee.verified && <CheckCircle2 size={14} className={styles.verified} />}</h3>
               {nominee.club && <p>{nominee.club}</p>}
-              {nominee.region && <span className={styles.regionBadge}>{nominee.region}</span>}
             </div>
           </div>
         ))}

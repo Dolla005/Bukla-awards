@@ -43,7 +43,6 @@ model Nominee {
   id          String    @id @default(cuid())
   name        String
   club        String?
-  region      String?
   county      String?
   photoUrl    String?
   verified    Boolean   @default(false)
