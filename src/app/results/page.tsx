@@ -1,6 +1,5 @@
 import { prisma } from '@/lib/prisma';
 import styles from './page.module.css';
-import ConfettiClient from '@/components/ConfettiClient';
 import { Crown, Trophy } from 'lucide-react';
 import Image from 'next/image';
 
@@ -53,7 +52,6 @@ export default async function ResultsPage() {
 
   return (
     <div className={styles.page}>
-      <ConfettiClient />
       
       <header className={styles.header}>
         <h1 className={styles.title}>Official Results</h1>
