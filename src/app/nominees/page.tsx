@@ -30,25 +30,21 @@ export default async function NomineesPage() {
           {categories.map((category) => (
             <div key={category.id} className={styles.categorySection}>
               <h2>{category.name}</h2>
-              <div className={styles.grid}>
+              <div className={styles.listContainer}>
                 {category.nominees.length > 0 ? (
-                  category.nominees.map((nominee) => (
-                    <div key={nominee.id} className={styles.card}>
-                      <div className={styles.imageWrapper}>
-                        <Image
-                          src={nominee.photoUrl || '/images/star-trophy.png'}
-                          alt={nominee.name}
-                          fill
-                          className={styles.image}
-                        />
-                      </div>
-                      <div className={styles.info}>
-                        <h3>{nominee.name}</h3>
-                        {nominee.club && <p className={styles.club}>{nominee.club}</p>}
-                        {nominee.county && <p className={styles.county}>{nominee.county}</p>}
-                      </div>
-                    </div>
-                  ))
+                  <ul className={styles.nomineeList}>
+                    {category.nominees.map((nominee) => (
+                      <li key={nominee.id} className={styles.listItem}>
+                        <div className={styles.info}>
+                          <h3>{nominee.name}</h3>
+                          <div className={styles.meta}>
+                            {nominee.club && <span className={styles.club}>{nominee.club}</span>}
+                            {nominee.county && <span className={styles.county}>{nominee.club ? ` • ` : ''}{nominee.county}</span>}
+                          </div>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
                 ) : (
                   <p className={styles.emptyText}>Nominees for this category will be announced soon.</p>
                 )}
