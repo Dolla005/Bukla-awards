@@ -39,9 +39,12 @@
   padding: 2rem;
   text-align: center;
   position: relative;
-  overflow: hidden;
   box-shadow: 0 8px 32px rgba(255, 215, 0, 0.05);
   transition: transform 0.3s ease;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .winnerCard:hover {
