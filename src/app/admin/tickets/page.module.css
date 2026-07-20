@@ -1,0 +1,116 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h2 {
+  font-family: var(--font-serif);
+  color: var(--primary-gold);
+  font-size: 1.8rem;
+}
+
+.tableContainer {
+  background: var(--bg-panel);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+.emptyState {
+  padding: 3rem;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.table th {
+  background: rgba(0, 0, 0, 0.2);
+  color: var(--primary-gold-light);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+.table tr:hover td {
+  background: rgba(212, 175, 55, 0.02);
+}
+
+.name {
+  font-weight: 600;
+  color: white;
+}
+
+.email {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.phone {
+  font-size: 0.85rem;
+  color: var(--primary-gold);
+  margin-top: 0.2rem;
+}
+
+.ticketTypeBadge {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.amount {
+  font-family: monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #4ade80;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.pending {
+  background: rgba(255, 170, 0, 0.15);
+  color: #ffaa00;
+  border: 1px solid rgba(255, 170, 0, 0.3);
+}
+
+.paid {
+  background: rgba(0, 255, 0, 0.1);
+  color: #4ade80;
+  border: 1px solid rgba(0, 255, 0, 0.3);
+}
+
+.cancelled {
+  background: rgba(255, 0, 0, 0.1);
+  color: #ff6b6b;
+  border: 1px solid rgba(255, 0, 0, 0.3);
+}

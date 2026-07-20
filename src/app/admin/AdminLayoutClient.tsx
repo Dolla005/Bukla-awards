@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { LayoutDashboard, Users, Tags, MessageSquare, LogOut, ArrowLeft, Settings, Menu, X } from 'lucide-react';
+import { LayoutDashboard, Users, Tags, MessageSquare, LogOut, ArrowLeft, Settings, Menu, X, Ticket } from 'lucide-react';
 import styles from './layout.module.css';
 
 export default function AdminLayoutClient({ children, userName }: { children: React.ReactNode, userName: string }) {
@@ -43,6 +43,10 @@ export default function AdminLayoutClient({ children, userName }: { children: Re
           <Link href="/admin/nominations" className={styles.navLink} onClick={toggle}>
             <MessageSquare size={20} />
             <span>Public Nominations</span>
+          </Link>
+          <Link href="/admin/tickets" className={styles.navLink} onClick={toggle}>
+            <Ticket size={20} />
+            <span>Tickets</span>
           </Link>
           <Link href="/admin/settings" className={styles.navLink} onClick={toggle}>
             <Settings size={20} />

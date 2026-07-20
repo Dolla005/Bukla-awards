@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Header from '@/components/Header';
 import styles from './page.module.css';
 
@@ -23,7 +24,7 @@ export default function TicketsPage() {
                 <li>Access to Main Arena</li>
                 <li>Cash Bar Access</li>
               </ul>
-              <button className={styles.buyBtn}>Buy Now</button>
+              <Link href="/tickets/checkout?type=Regular" className={styles.buyBtn}>Buy Now</Link>
             </div>
 
             <div className={`${styles.ticketCard} ${styles.vipCard}`}>
@@ -38,7 +39,7 @@ export default function TicketsPage() {
                 <li>Welcome Drinks</li>
                 <li>Dedicated VIP Bar</li>
               </ul>
-              <button className={styles.buyBtn}>Buy VIP</button>
+              <Link href="/tickets/checkout?type=VIP" className={styles.buyBtn}>Buy VIP</Link>
             </div>
 
             <div className={styles.ticketCard}>
@@ -53,7 +54,7 @@ export default function TicketsPage() {
                 <li>Meet & Greet Access</li>
                 <li>Dedicated Hostess</li>
               </ul>
-              <button className={styles.buyBtn}>Reserve Table</button>
+              <Link href="/tickets/checkout?type=VVIP Table" className={styles.buyBtn}>Reserve Table</Link>
             </div>
           </div>
         </div>

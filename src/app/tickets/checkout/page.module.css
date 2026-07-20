@@ -1,0 +1,160 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  padding-bottom: 4rem;
+}
+
+.hero {
+  background: var(--bg-dark);
+  padding: 8rem 2rem 4rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border-gold);
+}
+
+.hero h1 {
+  font-family: var(--font-serif);
+  color: var(--primary-gold);
+  font-size: 2.5rem;
+}
+
+.content {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.checkoutForm {
+  background: var(--bg-panel);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+.checkoutForm h2 {
+  color: var(--primary-gold-light);
+  margin-bottom: 0.5rem;
+}
+
+.priceSummary {
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+.formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.formGroup input {
+  width: 100%;
+  padding: 0.8rem;
+  background: var(--bg-dark);
+  border: 1px solid var(--border-gold);
+  border-radius: 4px;
+  color: white;
+}
+
+.totalSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+  font-size: 1.2rem;
+}
+
+.totalSection strong {
+  color: var(--primary-gold);
+  font-size: 1.5rem;
+}
+
+.submitBtn {
+  width: 100%;
+  background: linear-gradient(135deg, var(--primary-gold), var(--primary-gold-dark));
+  color: var(--bg-dark);
+  padding: 1rem;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+}
+
+.submitBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.successCard {
+  background: var(--bg-panel);
+  border: 1px solid var(--primary-gold);
+  border-radius: 12px;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.successCard h2 {
+  color: #4ade80;
+  margin-bottom: 1rem;
+}
+
+.paymentInstructions {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: rgba(212, 175, 55, 0.1);
+  border-radius: 8px;
+  text-align: left;
+}
+
+.paymentInstructions h3 {
+  color: var(--primary-gold);
+  margin-bottom: 1rem;
+}
+
+.tillInfo {
+  display: flex;
+  justify-content: space-between;
+  background: var(--bg-dark);
+  padding: 1rem;
+  border-radius: 4px;
+  margin: 1rem 0;
+  font-size: 1.2rem;
+}
+
+.tillInfo strong {
+  color: var(--primary-gold);
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+}
+
+.backBtn {
+  background: transparent;
+  color: var(--primary-gold);
+  border: 1px solid var(--primary-gold);
+  padding: 0.8rem 2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.error {
+  background: rgba(255, 0, 0, 0.1);
+  border: 1px solid red;
+  color: #ff6b6b;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+}
