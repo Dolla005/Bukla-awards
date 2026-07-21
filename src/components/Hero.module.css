@@ -67,6 +67,13 @@
   color: var(--text-primary);
 }
 
+.recognizing {
+  font-size: 2rem;
+  font-weight: 500;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
 .title span {
   color: var(--primary-gold-light);
 }

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
 import { useSession, signOut } from 'next-auth/react';
 import styles from './Header.module.css';
@@ -37,8 +38,14 @@ export default function Header() {
       <div className={styles.container}>
         <div className={styles.logo}>
           <Link href="/" onClick={closeMenu}>
-            <h1>BUKLA</h1>
-            <p>AWARDS 2026<span className={styles.star}>☆</span></p>
+            <Image 
+              src="/images/logo.png" 
+              alt="Bukla Awards 2026" 
+              width={140} 
+              height={55} 
+              style={{ objectFit: 'contain' }}
+              priority
+            />
           </Link>
         </div>
 

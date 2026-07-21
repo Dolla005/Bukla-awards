@@ -33,7 +33,7 @@ export default async function Hero() {
         <div className={styles.content}>
           <p className={styles.subtitle}>KENYA&apos;S BIGGEST NIGHTLIFE AWARDS</p>
           <h1 className={styles.title}>
-            RECOGNIZING EXCELLENCE IN <br />
+            <span className={styles.recognizing}>RECOGNIZING EXCELLENCE IN</span> <br />
             <span>KENYA&apos;S NIGHTLIFE INDUSTRY</span>
           </h1>
           <p className={styles.description}>
