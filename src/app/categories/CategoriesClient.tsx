@@ -35,14 +35,14 @@ export default function CategoriesClient({
 
   if (!hasVotingStarted) {
     return (
-      <div className={styles.lockedVotingContainer} style={{ marginTop: '3rem', padding: '4rem 2rem', background: 'var(--bg-panel)', border: '1px solid var(--border-gold)', borderRadius: '12px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '2rem' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
-          <Lock size={48} color="var(--primary-gold)" style={{ marginBottom: '0.5rem' }} />
-          <h2 style={{ fontSize: '2.5rem', color: 'var(--text-primary)', fontFamily: 'var(--font-serif)' }}>Voting Has Not Started Yet</h2>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem' }}>Voting for the Bukla Awards 2026 will officially begin in:</p>
+      <div className={styles.lockedVotingContainer}>
+        <div className={styles.lockedHeader}>
+          <Lock size={48} className={styles.lockIcon} />
+          <h2>Voting Has Not Started Yet</h2>
+          <p>Voting for the Bukla Awards 2026 will officially begin in:</p>
         </div>
-        <div style={{ width: '100%', maxWidth: '600px', margin: '0 auto', background: 'rgba(10, 2, 2, 0.5)', borderRadius: '12px', padding: '1.5rem' }}>
-          <CountdownWidget targetDate={votingStartDate} />
+        <div className={styles.countdownWrapper}>
+          <CountdownWidget targetDate={votingStartDate} title="VOTING OPENS IN" />
         </div>
       </div>
     );

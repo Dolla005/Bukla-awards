@@ -136,3 +136,21 @@
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+@media (max-width: 480px) {
+  .widget {
+    padding: 1.5rem 1rem;
+  }
+  .countdown {
+    gap: 0.5rem;
+  }
+  .number {
+    font-size: 2rem;
+  }
+  .label {
+    font-size: 0.65rem;
+  }
+  .header h3 {
+    font-size: 1.1rem;
+  }
+}

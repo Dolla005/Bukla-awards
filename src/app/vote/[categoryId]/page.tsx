@@ -35,12 +35,13 @@ export default async function VotePage({ params }: { params: Promise<{ categoryI
     voteBalance = user?.voteBalance || 0;
   }
 
-  const votingStartDateSetting = await prisma.systemSetting.findUnique({
-    where: { key: 'votingStartDate' }
-  });
+  const [votingStartDateSetting, eventDateSetting] = await Promise.all([
+    prisma.systemSetting.findUnique({ where: { key: 'votingStartDate' } }),
+    prisma.systemSetting.findUnique({ where: { key: 'eventDate' } })
+  ]);
   
-  // Default to a future date if not set for demonstration
-  const votingStartDate = votingStartDateSetting?.value || '2026-11-01T00:00:00Z';
+  // Use votingStartDate if set, otherwise fallback to eventDate so it matches the home page timer
+  const votingStartDate = votingStartDateSetting?.value || eventDateSetting?.value || '2026-12-19T18:00:00Z';
 
   return (
     <div className={styles.page}>

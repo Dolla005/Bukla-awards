@@ -8,11 +8,13 @@ import Link from 'next/link';
 export default function CountdownWidget({ 
   targetDate = '2026-12-19T18:00:00Z', 
   location = 'KICC, NAIROBI',
-  showResults = false
+  showResults = false,
+  title = 'AWARDS NIGHT <span>Live</span>'
 }: { 
   targetDate?: string;
   location?: string;
   showResults?: boolean;
+  title?: string | React.ReactNode;
 }) {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -63,7 +65,11 @@ export default function CountdownWidget({
   return (
     <div className={styles.widget}>
       <div className={styles.header}>
-        <h3>AWARDS NIGHT <span>Live</span></h3>
+        {typeof title === 'string' && title.includes('<span>') ? (
+          <h3 dangerouslySetInnerHTML={{ __html: title }} />
+        ) : (
+          <h3>{title}</h3>
+        )}
       </div>
       
       {isEnded && showResults ? (

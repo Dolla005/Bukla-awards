@@ -111,7 +111,7 @@ export default function VoteClientComponent({
             <p>Voting for the Bukla Awards 2026 will officially begin in:</p>
           </div>
           <div className={styles.countdownWrapper}>
-            <CountdownWidget targetDate={votingStartDate} />
+            <CountdownWidget targetDate={votingStartDate} title="VOTING OPENS IN" />
           </div>
         </div>
       )}
