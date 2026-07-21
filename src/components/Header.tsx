@@ -13,7 +13,6 @@ const navLinks = [
   { name: 'CATEGORIES', href: '/categories' },
   { name: 'NOMINATE', href: '/nominate' },
   { name: 'VOTE', href: '/categories' },
-  { name: 'BUY VOTES', href: '/buy-votes' },
   { name: 'NOMINEES', href: '/nominees' },
   { name: 'GALLERY', href: '/gallery' },
   { name: 'SPONSORS', href: '/sponsors' },

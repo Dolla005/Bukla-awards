@@ -26,14 +26,6 @@ export default async function VotePage({ params }: { params: Promise<{ categoryI
   }
 
   const session = await getServerSession(authOptions);
-  let voteBalance = 0;
-  if (session?.user) {
-    const user = await prisma.user.findUnique({
-      where: { id: (session.user as any).id },
-      select: { voteBalance: true }
-    });
-    voteBalance = user?.voteBalance || 0;
-  }
 
   const [votingStartDateSetting, eventDateSetting] = await Promise.all([
     prisma.systemSetting.findUnique({ where: { key: 'votingStartDate' } }),
@@ -58,7 +50,6 @@ export default async function VotePage({ params }: { params: Promise<{ categoryI
         <VoteClientComponent 
           category={category} 
           nominees={category.nominees} 
-          initialVoteBalance={voteBalance} 
           votingStartDate={votingStartDate}
         />
       </main>

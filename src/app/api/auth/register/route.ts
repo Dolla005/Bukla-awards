@@ -4,14 +4,28 @@ import bcrypt from 'bcryptjs';
 
 export async function POST(req: Request) {
   try {
-    const { name, phone, password } = await req.json();
+    const { name, phone, password, otp } = await req.json();
 
-    if (!name || !phone || !password) {
+    if (!name || !phone || !password || !otp) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
 
     if (password.length < 6) {
       return NextResponse.json({ error: 'Password must be at least 6 characters' }, { status: 400 });
+    }
+
+    // Verify OTP
+    const otpRecord = await prisma.otpVerification.findFirst({
+      where: { phone, code: otp },
+      orderBy: { createdAt: 'desc' }
+    });
+
+    if (!otpRecord) {
+      return NextResponse.json({ error: 'Invalid or missing OTP' }, { status: 400 });
+    }
+
+    if (otpRecord.expiresAt < new Date()) {
+      return NextResponse.json({ error: 'OTP has expired' }, { status: 400 });
     }
 
     // Check if phone number is already registered
@@ -22,6 +36,11 @@ export async function POST(req: Request) {
     if (existingUser) {
       return NextResponse.json({ error: 'This phone number is already registered' }, { status: 400 });
     }
+
+    // Delete OTP record since it's used
+    await prisma.otpVerification.deleteMany({
+      where: { phone }
+    });
 
     const hashedPassword = await bcrypt.hash(password, 10);
 

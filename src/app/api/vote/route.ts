@@ -24,59 +24,41 @@ export async function POST(req: Request) {
     }
 
     const body = await req.json();
-    const { categoryId, nomineeId, amount = 1 } = body;
+    const { categoryId, nomineeId } = body;
 
     if (!categoryId || !nomineeId) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
 
-    if (amount < 1) {
-      return NextResponse.json({ error: 'Amount must be at least 1' }, { status: 400 });
-    }
-
-    // Check if user has enough vote balance
-    const user = await prisma.user.findUnique({
-      where: { id: userId },
-      select: { voteBalance: true }
+    // Enforce 1 vote per category
+    const existingVote = await prisma.vote.findFirst({
+      where: {
+        userId,
+        categoryId
+      }
     });
 
-    if (!user || user.voteBalance < amount) {
+    if (existingVote) {
       return NextResponse.json({ 
-        error: 'Insufficient vote balance. Please buy more votes.',
-        insufficientBalance: true
+        error: 'You have already voted in this category.'
       }, { status: 403 });
     }
 
-    // Execute in a transaction to ensure atomicity
-    const result = await prisma.$transaction(async (tx) => {
-      // 1. Deduct balance
-      const updatedUser = await tx.user.update({
-        where: { id: userId },
-        data: {
-          voteBalance: {
-            decrement: amount
-          }
-        }
-      });
+    // Simulate payment processing delay (M-Pesa STK Push mock)
+    await new Promise(resolve => setTimeout(resolve, 2000));
 
-      // 2. Create votes (we use createMany for bulk insertion)
-      const voteData = Array.from({ length: amount }).map(() => ({
+    // Record the vote
+    await prisma.vote.create({
+      data: {
         userId,
         categoryId,
         nomineeId
-      }));
-
-      await tx.vote.createMany({
-        data: voteData
-      });
-
-      return updatedUser;
+      }
     });
 
     return NextResponse.json({ 
       success: true, 
-      message: `Successfully cast ${amount} vote(s)`,
-      newBalance: result.voteBalance
+      message: `Payment successful! Your vote has been cast.`,
     }, { status: 201 });
   } catch (error: any) {
     console.error('Voting error:', error);
