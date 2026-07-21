@@ -313,3 +313,97 @@
   border-radius: 12px;
   padding: 1.5rem;
 }
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.paymentModal {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-gold);
+  border-radius: 12px;
+  padding: 2.5rem 2rem;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.paymentModal h3 {
+  color: var(--primary-gold);
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.paymentModal p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.inputGroup label {
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.inputGroup input {
+  padding: 0.8rem 1rem;
+  background: var(--bg-dark);
+  border: 1px solid var(--border-gold);
+  border-radius: 6px;
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+.inputGroup input:focus {
+  outline: none;
+  border-color: var(--primary-gold-light);
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+}
+
+.modalActions {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+.cancelBtn {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--text-secondary);
+  padding: 0.8rem;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: all 0.2s;
+  order: 2;
+}
+
+.cancelBtn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+}
+
+.paymentModal .submitBtn {
+  order: 1;
+}

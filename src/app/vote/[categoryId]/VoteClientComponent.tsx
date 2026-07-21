@@ -20,6 +20,8 @@ export default function VoteClientComponent({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const [showPaymentPrompt, setShowPaymentPrompt] = useState(false);
+  const [paymentPhone, setPaymentPhone] = useState('');
   const [hasVotingStarted, setHasVotingStarted] = useState(true);
   const router = useRouter();
 
@@ -42,8 +44,17 @@ export default function VoteClientComponent({
     }
   }, [votingStartDate]);
 
-  const handleVote = async () => {
+  const handleVoteClick = () => {
     if (!selectedNominee) return;
+    setShowPaymentPrompt(true);
+  };
+
+  const confirmPayment = async () => {
+    if (!selectedNominee) return;
+    if (!paymentPhone || paymentPhone.length < 9) {
+      setError('Please enter a valid phone number');
+      return;
+    }
 
     setLoading(true);
     setError('');
@@ -71,8 +82,8 @@ export default function VoteClientComponent({
       setTimeout(() => {
         setSuccess('');
         setSelectedNominee(null);
-        setSuccess('');
-        setSelectedNominee(null);
+        setShowPaymentPrompt(false);
+        setPaymentPhone('');
         router.refresh();
       }, 3000);
       
@@ -100,12 +111,12 @@ export default function VoteClientComponent({
 
       {hasVotingStarted && (
         <>
-      {error && (
+      {error && !showPaymentPrompt && (
         <div className={styles.error}>
           <p>{error}</p>
         </div>
       )}
-      {success && <div className={styles.success}>{success}</div>}
+      {success && !showPaymentPrompt && <div className={styles.success}>{success}</div>}
 
       <div className={styles.grid}>
         {nominees.map((nominee) => (
@@ -134,13 +145,53 @@ export default function VoteClientComponent({
         <div className={styles.voteControls}>
           <button 
             className={styles.submitBtn} 
-            disabled={!selectedNominee || loading || !!success}
-            onClick={handleVote}
+            disabled={!selectedNominee || loading || !!success || showPaymentPrompt}
+            onClick={handleVoteClick}
           >
             {loading ? 'PROCESSING PAYMENT...' : 'PAY KSH 25 & VOTE'}
           </button>
         </div>
       </div>
+
+      {showPaymentPrompt && (
+        <div className={styles.modalOverlay}>
+          <div className={styles.paymentModal}>
+            <h3>M-Pesa Payment</h3>
+            <p>You are about to pay Ksh 25 to cast your vote.</p>
+            
+            {error && <div className={styles.error}>{error}</div>}
+            {success && <div className={styles.success}>{success}</div>}
+            
+            <div className={styles.inputGroup}>
+              <label>M-Pesa Phone Number</label>
+              <input 
+                type="text" 
+                placeholder="e.g. 0712345678" 
+                value={paymentPhone}
+                onChange={(e) => setPaymentPhone(e.target.value)}
+                disabled={loading || !!success}
+              />
+            </div>
+            
+            <div className={styles.modalActions}>
+              <button 
+                className={styles.cancelBtn} 
+                onClick={() => { setShowPaymentPrompt(false); setError(''); }}
+                disabled={loading || !!success}
+              >
+                CANCEL
+              </button>
+              <button 
+                className={styles.submitBtn} 
+                onClick={confirmPayment}
+                disabled={loading || !!success}
+              >
+                {loading ? 'PROCESSING...' : 'CONFIRM PAYMENT'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
         </>
       )}
     </div>
