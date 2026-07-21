@@ -5,16 +5,16 @@
   --primary-gold-dark: #b5952f;
   --primary-gold-light: #f5da7d;
   
-  --bg-dark: #0a0202;
-  --bg-panel: #1a0808;
-  --bg-panel-light: #2a0c0c;
+  --bg-dark: #050202; /* Deeper black */
+  --bg-panel: #0a0404; /* Very dark panel */
+  --bg-panel-light: #150a0a;
   
   --text-primary: #ffffff;
   --text-secondary: #cccccc;
   --text-muted: #888888;
   
-  --border-gold: rgba(212, 175, 55, 0.3);
-  --border-light: rgba(255, 255, 255, 0.1);
+  --border-gold: rgba(212, 175, 55, 0.2);
+  --border-light: rgba(255, 255, 255, 0.05);
   
   --font-sans: 'Outfit', sans-serif;
   --font-serif: 'Playfair Display', serif;
@@ -28,6 +28,12 @@
 
 body {
   background-color: var(--bg-dark);
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+    linear-gradient(45deg, rgba(212, 175, 55, 0.02) 25%, transparent 25%, transparent 75%, rgba(212, 175, 55, 0.02) 75%, rgba(212, 175, 55, 0.02)),
+    linear-gradient(45deg, rgba(212, 175, 55, 0.02) 25%, transparent 25%, transparent 75%, rgba(212, 175, 55, 0.02) 75%, rgba(212, 175, 55, 0.02));
+  background-size: 100% 100%, 60px 60px, 60px 60px;
+  background-position: 0 0, 0 0, 30px 30px;
   color: var(--text-primary);
   font-family: var(--font-sans);
   line-height: 1.5;
