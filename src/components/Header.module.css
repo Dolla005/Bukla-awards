@@ -20,7 +20,7 @@
 .logo a {
   display: flex;
   flex-direction: column;
-  margin-left: -2.5rem; /* Pull much closer to the left margin */
+  margin-left: -4rem; /* Pull flush to the far left screen edge */
 }
 
 .logoImage {
