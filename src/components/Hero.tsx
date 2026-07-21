@@ -37,10 +37,10 @@ export default async function Hero() {
 
       <div className={styles.container}>
         <div className={styles.content}>
-          <div className="academy-title-wrapper" style={{ justifyContent: 'flex-start', marginBottom: '1rem', gap: '1rem' }}>
-            <img src="/images/laurel-left.svg" alt="" className="academy-laurel" style={{ width: '30px', opacity: 0.9 }} />
+          <div className="academy-title-wrapper" style={{ marginBottom: '1.5rem', gap: '1rem', flexWrap: 'nowrap' }}>
+            <img src="/images/laurel-left.svg" alt="" className="academy-laurel" style={{ width: '24px', opacity: 0.9, flexShrink: 0 }} />
             <p className={styles.subtitle} style={{ marginBottom: 0 }}>KENYA&apos;S BIGGEST NIGHTLIFE AWARDS</p>
-            <img src="/images/laurel-right.svg" alt="" className="academy-laurel" style={{ width: '30px', opacity: 0.9 }} />
+            <img src="/images/laurel-right.svg" alt="" className="academy-laurel" style={{ width: '24px', opacity: 0.9, flexShrink: 0 }} />
           </div>
           
           <h1 className={styles.title}>
