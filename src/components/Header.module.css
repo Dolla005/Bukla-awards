@@ -20,12 +20,13 @@
 .logo a {
   display: flex;
   flex-direction: column;
-  margin-left: -1rem; /* Pull closer to the left margin */
+  margin-left: -2.5rem; /* Pull much closer to the left margin */
 }
 
 .logoImage {
   object-fit: contain;
-  /* To ensure the image blends without a visible border, we can apply a subtle mask if needed */
+  transform: scale(1.4);
+  transform-origin: left center;
 }
 
 .nav ul {
