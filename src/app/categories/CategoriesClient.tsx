@@ -33,22 +33,21 @@ export default function CategoriesClient({
     }
   }, [votingStartDate]);
 
-  if (!hasVotingStarted) {
-    return (
-      <div className={styles.lockedVotingContainer}>
-        <div className={styles.lockedHeader}>
-          <Lock size={48} className={styles.lockIcon} />
-          <h2>Voting Has Not Started Yet</h2>
-          <p>Voting for the Bukla Awards 2026 will officially begin in:</p>
-        </div>
-        <div className={styles.countdownWrapper}>
-          <CountdownWidget targetDate={votingStartDate} title="VOTING OPENS IN" />
-        </div>
-      </div>
-    );
-  }
-
   return (
+    <>
+      {!hasVotingStarted && (
+        <div className={styles.lockedVotingContainer} style={{ marginBottom: '2rem' }}>
+          <div className={styles.lockedHeader}>
+            <Lock size={32} className={styles.lockIcon} />
+            <h2>Voting Has Not Started Yet</h2>
+            <p>Voting for the Bukla Awards 2026 will officially begin in:</p>
+          </div>
+          <div className={styles.countdownWrapper}>
+            <CountdownWidget targetDate={votingStartDate} title="VOTING OPENS IN" />
+          </div>
+        </div>
+      )}
+
     <div className={styles.grid}>
       {categories.map((category) => (
         <div key={category.id} className={styles.card}>
@@ -70,5 +69,6 @@ export default function CategoriesClient({
         </div>
       ))}
     </div>
+    </>
   );
 }

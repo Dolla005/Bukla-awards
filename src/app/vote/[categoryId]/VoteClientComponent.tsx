@@ -97,7 +97,7 @@ export default function VoteClientComponent({
   return (
     <div className={styles.container}>
       {!hasVotingStarted && (
-        <div className={styles.lockedVotingContainer}>
+        <div className={styles.lockedVotingContainer} style={{ marginBottom: '2rem' }}>
           <div className={styles.lockedHeader}>
             <Lock size={32} className={styles.lockIcon} />
             <h2>Voting Has Not Started Yet</h2>
@@ -109,8 +109,6 @@ export default function VoteClientComponent({
         </div>
       )}
 
-      {hasVotingStarted && (
-        <>
       {error && !showPaymentPrompt && (
         <div className={styles.error}>
           <p>{error}</p>
@@ -141,17 +139,19 @@ export default function VoteClientComponent({
         ))}
       </div>
 
-      <div className={styles.actionArea}>
-        <div className={styles.voteControls}>
-          <button 
-            className={styles.submitBtn} 
-            disabled={!selectedNominee || loading || !!success || showPaymentPrompt}
-            onClick={handleVoteClick}
-          >
-            {loading ? 'PROCESSING PAYMENT...' : 'PAY KSH 25 & VOTE'}
-          </button>
+      {hasVotingStarted && (
+        <div className={styles.actionArea}>
+          <div className={styles.voteControls}>
+            <button 
+              className={styles.submitBtn} 
+              disabled={!selectedNominee || loading || !!success || showPaymentPrompt}
+              onClick={handleVoteClick}
+            >
+              {loading ? 'PROCESSING PAYMENT...' : 'PAY KSH 25 & VOTE'}
+            </button>
+          </div>
         </div>
-      </div>
+      )}
 
       {showPaymentPrompt && (
         <div className={styles.modalOverlay}>
@@ -191,8 +191,6 @@ export default function VoteClientComponent({
             </div>
           </div>
         </div>
-      )}
-        </>
       )}
     </div>
   );
