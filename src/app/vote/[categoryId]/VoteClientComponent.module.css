@@ -107,9 +107,9 @@
 }
 
 .card.selected {
-  border: 2px solid var(--primary-gold);
-  box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
-  transform: translateY(-8px) scale(1.02);
+  border: 1px solid var(--primary-gold);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+  transform: translateY(-5px) scale(1.01);
   z-index: 10;
 }
 
