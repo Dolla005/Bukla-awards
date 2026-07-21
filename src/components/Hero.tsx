@@ -29,9 +29,20 @@ export default async function Hero() {
         <div className={styles.overlay}></div>
       </div>
 
+      <div className="academy-diagonal-overlay" style={{ zIndex: 1 }}>
+        <div className="academy-diagonal-line"></div>
+        <div className="academy-diagonal-line"></div>
+        <div className="academy-diagonal-line"></div>
+      </div>
+
       <div className={styles.container}>
         <div className={styles.content}>
-          <p className={styles.subtitle}>KENYA&apos;S BIGGEST NIGHTLIFE AWARDS</p>
+          <div className="academy-title-wrapper" style={{ justifyContent: 'flex-start', marginBottom: '1rem', gap: '1rem' }}>
+            <img src="/images/laurel-left.svg" alt="" className="academy-laurel" style={{ width: '30px', opacity: 0.9 }} />
+            <p className={styles.subtitle} style={{ marginBottom: 0 }}>KENYA&apos;S BIGGEST NIGHTLIFE AWARDS</p>
+            <img src="/images/laurel-right.svg" alt="" className="academy-laurel" style={{ width: '30px', opacity: 0.9 }} />
+          </div>
+          
           <h1 className={styles.title}>
             <span className={styles.recognizing}>RECOGNIZING EXCELLENCE IN</span> <br />
             <span>KENYA&apos;S NIGHTLIFE INDUSTRY</span>
