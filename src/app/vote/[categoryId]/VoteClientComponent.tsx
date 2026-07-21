@@ -183,7 +183,6 @@ export default function VoteClientComponent({
           </button>
         </div>
       </div>
-          </div>
         </>
       )}
     </div>
