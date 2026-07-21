@@ -20,81 +20,11 @@
 .logo a {
   display: flex;
   flex-direction: column;
-  text-decoration: none;
 }
 
-.logoWrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  transform: rotate(-3deg);
-}
-
-.logoTop h1 {
-  font-family: 'Arial Black', Impact, sans-serif;
-  font-size: 2.2rem;
-  color: #fff;
-  letter-spacing: 1px;
-  line-height: 0.9;
-  text-shadow: 
-    3px 3px 0 #000, 
-    -1px -1px 0 #000, 
-    1px -1px 0 #000, 
-    -1px 1px 0 #000, 
-    1px 1px 0 #000;
-  margin: 0;
-  transform: skewX(-5deg);
-}
-
-.logoMiddle {
-  margin-top: -2px;
-}
-
-.logoMiddle p {
-  font-family: 'Arial Black', Impact, sans-serif;
-  font-size: 1rem;
-  color: #fff;
-  letter-spacing: 1.5px;
-  line-height: 1;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  text-shadow: 
-    2px 2px 0 #000,
-    -1px -1px 0 #000, 
-    1px -1px 0 #000, 
-    -1px 1px 0 #000, 
-    1px 1px 0 #000;
-  transform: skewX(-5deg);
-}
-
-.star {
-  color: #FFD700;
-  font-size: 1.2rem;
-  text-shadow: 1px 1px 0 #000;
-  margin-bottom: 2px;
-}
-
-.logoBottom {
-  background-color: #FFCC00;
-  padding: 2px 8px;
-  margin-top: 2px;
-  transform: skewX(-10deg);
-  border: 1px solid #000;
-  box-shadow: 2px 2px 0 rgba(0,0,0,0.8);
-}
-
-.logoBottom span {
-  display: block;
-  font-family: var(--font-sans), sans-serif;
-  font-size: 0.75rem;
-  font-weight: 800;
-  color: #000;
-  transform: skewX(10deg); /* un-skew text */
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
+.logoImage {
+  object-fit: contain;
+  /* To ensure the image blends without a visible border, we can apply a subtle mask if needed */
 }
 
 .nav ul {

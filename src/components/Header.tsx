@@ -38,17 +38,15 @@ export default function Header() {
       <div className={styles.container}>
         <div className={styles.logo}>
           <Link href="/" onClick={closeMenu}>
-            <div className={styles.logoWrapper}>
-              <div className={styles.logoTop}>
-                <h1>BUKLA</h1>
-              </div>
-              <div className={styles.logoMiddle}>
-                <p>AWARDS 2026<span className={styles.star}>☆</span></p>
-              </div>
-              <div className={styles.logoBottom}>
-                <span>Kenya&apos;s Nightlife Awards</span>
-              </div>
-            </div>
+            <Image 
+              src="/images/logo.png" 
+              alt="Bukla Awards 2026" 
+              width={140} 
+              height={55} 
+              style={{ objectFit: 'contain' }}
+              className={styles.logoImage}
+              priority
+            />
           </Link>
         </div>
 
