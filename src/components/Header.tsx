@@ -41,8 +41,8 @@ export default function Header() {
             <Image 
               src="/images/logo.png" 
               alt="Bukla Awards 2026" 
-              width={140} 
-              height={55} 
+              width={180} 
+              height={70} 
               style={{ objectFit: 'contain' }}
               className={styles.logoImage}
               priority
