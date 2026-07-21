@@ -1,19 +1,50 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { CheckCircle2, Wallet } from 'lucide-react';
+import { CheckCircle2, Wallet, Lock } from 'lucide-react';
 import Link from 'next/link';
+import CountdownWidget from '@/components/CountdownWidget';
 import styles from './VoteClientComponent.module.css';
 
-export default function VoteClientComponent({ category, nominees, initialVoteBalance = 0 }: { category: any, nominees: any[], initialVoteBalance?: number }) {
+export default function VoteClientComponent({ 
+  category, 
+  nominees, 
+  initialVoteBalance = 0,
+  votingStartDate
+}: { 
+  category: any; 
+  nominees: any[]; 
+  initialVoteBalance?: number;
+  votingStartDate?: string;
+}) {
   const [selectedNominee, setSelectedNominee] = useState<string | null>(null);
   const [voteAmount, setVoteAmount] = useState<number | ''>(1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [insufficientBalance, setInsufficientBalance] = useState(false);
+  const [hasVotingStarted, setHasVotingStarted] = useState(true);
   const router = useRouter();
+
+  useEffect(() => {
+    if (votingStartDate) {
+      const targetTime = new Date(votingStartDate).getTime();
+      const now = new Date().getTime();
+      setHasVotingStarted(now >= targetTime);
+      
+      // Setup interval to check when voting opens if it hasn't already
+      if (now < targetTime) {
+        const timer = setInterval(() => {
+          if (new Date().getTime() >= targetTime) {
+            setHasVotingStarted(true);
+            clearInterval(timer);
+          }
+        }, 1000);
+        return () => clearInterval(timer);
+      }
+    }
+  }, [votingStartDate]);
 
   const handleVote = async () => {
     if (!selectedNominee) return;
@@ -72,7 +103,22 @@ export default function VoteClientComponent({ category, nominees, initialVoteBal
 
   return (
     <div className={styles.container}>
-      <div className={styles.balanceCard}>
+      {!hasVotingStarted && (
+        <div className={styles.lockedVotingContainer}>
+          <div className={styles.lockedHeader}>
+            <Lock size={32} className={styles.lockIcon} />
+            <h2>Voting Has Not Started Yet</h2>
+            <p>Voting for the Bukla Awards 2026 will officially begin in:</p>
+          </div>
+          <div className={styles.countdownWrapper}>
+            <CountdownWidget targetDate={votingStartDate} />
+          </div>
+        </div>
+      )}
+
+      {hasVotingStarted && (
+        <>
+          <div className={styles.balanceCard}>
         <div className={styles.balanceInfo}>
           <Wallet size={24} className={styles.walletIcon} />
           <div>
@@ -137,6 +183,9 @@ export default function VoteClientComponent({ category, nominees, initialVoteBal
           </button>
         </div>
       </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }

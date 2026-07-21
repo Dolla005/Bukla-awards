@@ -35,6 +35,13 @@ export default async function VotePage({ params }: { params: Promise<{ categoryI
     voteBalance = user?.voteBalance || 0;
   }
 
+  const votingStartDateSetting = await prisma.systemSetting.findUnique({
+    where: { key: 'votingStartDate' }
+  });
+  
+  // Default to a future date if not set for demonstration
+  const votingStartDate = votingStartDateSetting?.value || '2026-11-01T00:00:00Z';
+
   return (
     <div className={styles.page}>
       <Header />
@@ -47,7 +54,12 @@ export default async function VotePage({ params }: { params: Promise<{ categoryI
           </div>
         </div>
 
-        <VoteClientComponent category={category} nominees={category.nominees} initialVoteBalance={voteBalance} />
+        <VoteClientComponent 
+          category={category} 
+          nominees={category.nominees} 
+          initialVoteBalance={voteBalance} 
+          votingStartDate={votingStartDate}
+        />
       </main>
     </div>
   );
