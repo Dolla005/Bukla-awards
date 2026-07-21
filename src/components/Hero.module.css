@@ -3,7 +3,7 @@
   min-height: 80vh;
   display: flex;
   align-items: flex-start;
-  padding-top: 2rem;
+  padding-top: 0;
   overflow: hidden;
 }
 
@@ -46,7 +46,7 @@
 .container {
   max-width: 1600px;
   margin: 0 auto;
-  padding: 2rem 2rem 4rem;
+  padding: 1rem 2rem 4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -69,6 +69,7 @@
   letter-spacing: 4px;
   text-transform: uppercase;
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .title {
@@ -168,7 +169,7 @@
 
 @media (max-width: 900px) {
   .container {
-    padding-top: 4rem;
+    padding-top: 1rem;
   }
   .title {
     font-size: 2.8rem;
@@ -178,6 +179,10 @@
 @media (max-width: 768px) {
   .title {
     font-size: 2.2rem;
+  }
+  .subtitle {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
   }
   .actions {
     flex-direction: column;
