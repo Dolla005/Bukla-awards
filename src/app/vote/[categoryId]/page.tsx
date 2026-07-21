@@ -40,7 +40,11 @@ export default async function VotePage({ params }: { params: Promise<{ categoryI
       <Header />
       <main className={styles.main}>
         <div className={styles.header}>
-          <h1>{category.name}</h1>
+          <div className="academy-title-wrapper">
+            <img src="/images/laurel-left.svg" alt="" className="academy-laurel" />
+            <h1 className="academy-title">{category.name}</h1>
+            <img src="/images/laurel-right.svg" alt="" className="academy-laurel" />
+          </div>
           <p>{category.description}</p>
           <div className={styles.stats}>
             Total Votes Cast: <strong>{category._count.votes}</strong>

@@ -52,7 +52,13 @@ export default function CategoriesClient({
       {categories.map((category) => (
         <div key={category.id} className={styles.card}>
           <div className={styles.cardHeader}>
-            <h2>{category.name}</h2>
+            <div className="academy-title-wrapper" style={{ marginBottom: 0 }}>
+              <img src="/images/laurel-left.svg" alt="" className="academy-laurel" style={{ width: '24px' }} />
+              <h2 style={{ fontSize: '1.25rem', margin: 0, color: 'var(--primary-gold-light)', fontFamily: 'var(--font-serif)', letterSpacing: '2px', textTransform: 'uppercase' }}>
+                {category.name}
+              </h2>
+              <img src="/images/laurel-right.svg" alt="" className="academy-laurel" style={{ width: '24px' }} />
+            </div>
           </div>
           <div className={styles.cardBody}>
             <p>{category.description}</p>
